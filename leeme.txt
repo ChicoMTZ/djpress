@@ -1,0 +1,21 @@
+Falta ver como hacer el sistema de comentarios completo
+
+Ver como usar el framework de los mensajes con las Clases Genericas que estan en la ayuda de Django para mostrar correctamente los mensajes en el CRUD
+
+Del Front-End arreglar la barra de Navegacion y el Footer.
+
+En la vista de Ajax ver de que manera puedo hacerla con una Clase Genericas y arreglar sobre todo como obtener el pk de la entrada vista
+
+Darle a Ignacio el proyecto para que me de idea con el Front-End para arrglar la maquetacion con bootstrap
+
+Ver como poner el RitchText al campo TextFilds para poder poner la cantidad de palabras que quiera en la BD
+
+Agregar en el Index la cantidad de comentarios que hay por entradas sin aprobar aun
+
+Ver como usar una etiqueta <a> como un boton para que cuando le de click realice la accion Ajax
+
+Preguntar a Ignacio como recargar la web entera con Ajax
+
+Ver como establecerle una contraseña a los usuarios nuevos creados
+
+Empezar a estudiar el sistema de permisos de usuario para limitar a los nuevos usuarios y crear los tipos

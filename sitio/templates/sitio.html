@@ -1,0 +1,76 @@
+{% extends 'base_sitio.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+{% block NavBar %}
+    {% if user.is_authenticated %}
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'Editar_Perfil' %}">Logo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="{% url 'Index' %}">Administación</a></li>
+                        <li><a href="#">Nueva</a></li>
+                        <li><a href="#">Comentarios</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Hola, {{ user.username }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    {% else %}
+
+    {% endif %}
+{% endblock %}
+
+{% block Barra_Izquierda %}
+
+  {% if paginas %}
+
+     {% for elemt in paginas %}
+
+         <p><a href="{% url 'Pagina_Details' elemt.pk %}">{{ elemt.Titulo }}</a></p>
+
+
+     {% endfor %}
+
+  {% endif %}
+
+{% endblock %}
+
+{% block Centro %}
+
+
+
+    {% for entrada in entrada_list %}
+
+        <h4>
+            <small>RECENT POSTS</small>
+        </h4>
+        <hr>
+        <a href="{% url 'Entradas_Details' entrada.pk %}"><h2>{{ entrada.Titulo }}</h2></a>
+
+        <p>{{ entrada.Texto|truncatewords_html:60|safe }}</p>
+        <p class="text-right">{{ entrada.Fecha }}</p>
+
+        <p class="text-right">
+           Autor: {{ entrada.Autor.first_name }} {{ entrada.Autor.last_name }}</p>
+
+
+    {% endfor %}
+
+{% endblock %}
+</body>
+</html>

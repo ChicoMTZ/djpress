@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar</title>
+</head>
+<body>
+{% block Centro %}
+    <h1>Eliminar Página</h1>
+
+    <form action="" method="post">
+    {% csrf_token %}
+
+    <p>¿Estás seguro que deseas elminar {{ object.Titulo }}?</p>
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">Si
+        </button>
+    {% endbuttons %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">No
+        </button>
+    {% endbuttons %}
+
+</form>
+
+{% endblock %}
+</body>
+</html>

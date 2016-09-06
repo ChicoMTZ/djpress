@@ -1,0 +1,61 @@
+{# Poner la cantidad de entradas que tiene cada usuario #}
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+
+{% block Centro %}
+    <h1>Panel de Administración</h1>
+    <p>Cree, Modifique, Elimine y Actualice todas sus usuarios</p>
+    <a href="{% url 'Agregar_Usuarios' %}" class="btn btn-primary"> Añadir nuevo</a>
+    <br><br>
+    <div class="table-responsive">
+        <table class="table" id="myTable">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre de usuario</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Perfil</th>
+                <th>Entradas</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for usuario in usuario_list %}
+
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a href="{% url 'Perfiles' usuario.pk %}">{{ usuario.username }}</a></td>
+                    <td>{{ usuario.first_name }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.username }}</td>
+                    <td><a href="{% url 'Index' %}">{{ usuario.entrada_set.count }}</a></td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                'language': {
+                    'lengthMenu': 'Mostrar _MENU_ usuarios por página',
+                    'zeroRecords': 'No hay resultados que mostrar',
+                    'info': 'Mostrando página _PAGE_ de _PAGES_',
+                    'infoEmpty': 'No hay usuarios disponibles',
+
+                    'infoFiltered': '(filtered from _MAX_ total records)'
+                }
+            });
+        });
+    </script>
+
+{% endblock %}
+
+</html>

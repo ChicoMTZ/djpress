@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load bootstrap3 %}
+</head>
+
+<body>
+{% block Centro %}
+
+  <h2>Perfil</h2>
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        {% bootstrap_form form %}
+        {% buttons %}
+            <a href="{% url 'Editar_Perfil' %}" class="btn btn-primary">
+                Modificar
+            </a>
+        {% endbuttons %}
+
+</form>
+
+{% endblock %}
+</body>
+</html>

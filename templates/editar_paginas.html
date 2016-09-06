@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar</title>
+</head>
+<body>
+{% block Centro %}
+    <h1>Editar Página</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.media }}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary {% block button_class %}{% endblock %}">
+                {% block button_text %} Modificar {% endblock %}
+            </button>
+        {% endbuttons %}
+
+    </form>
+
+{% endblock %}
+</body>
+</html>

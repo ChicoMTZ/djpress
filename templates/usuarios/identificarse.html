@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load bootstrap3 %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block NavBar %}
+
+{% endblock %}
+{% block Centro %}
+    <h1>Usted debe estar logeado para poder acceder a las páginas de admnistración</h1>
+<form method="post" action="{% url 'Login' %}">
+
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary {% block button_class %}{% endblock %}">
+            {% block button_text %} Login {% endblock %}
+        </button>
+    {% endbuttons %}
+    <p><a href="{% url 'password_reset' %}">¿Perdió su contraseña?</a></p>
+    <input type="hidden" name="next" value="{{ next }}"/>
+</form>
+
+{% endblock %}
+{% block Footer %}
+
+{% endblock %}
+</body>
+</html>

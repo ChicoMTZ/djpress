@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+
+{% block Centro %}
+
+    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">Confirmar</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3>¿Realmente desea eliminar la entrada?</h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" id="confirmarEliminar" href="#">Aceptar</button>
+                                        <button type="button" class="btn btn-default" onclick="cancelDelete()" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+        </div>
+
+    <h1>Panel de Administración</h1>
+    <p>Modifique, Elimine y Actualice todas sus entradas</p>
+    <div class="table-responsive">
+        <table class="table" id="myTable">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th>Comentarios</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                'language': {
+                    'lengthMenu': 'Mostrar _MENU_ entradas por página',
+                    'zeroRecords': 'No hay resultados que mostrar',
+                    'info': 'Mostrando página _PAGE_ de _PAGES_',
+                    'infoEmpty': 'No hay entradas disponibles',
+                    'infoFiltered': '(filtered from _MAX_ total records)'
+                },
+                "sAjaxSource": "/ajax/get_entradas/",
+                             "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+
+                                 $('td:eq(1)', nRow).html('<a href="/entradas_details/'+aData[0]+'" > '+aData[1]+'</a>');
+
+                                 $('td:eq(2)', nRow).html( '<a href="/dj-admin/perfiles/'+aData[5]+'">' +aData[2]+'</a>');
+
+                                 $('td:eq(4)', nRow).html('<a href="/dj-admin/editar_entradas/'+aData[0]+'">Editar</a>' + ' ' +
+                                              '<a href="#" onclick="deleteUser('+aData[0]+')">Eliminar</a>');
+
+                             }
+                         });
+            });
+
+        function deleteUser(id) {
+             $('#confirmarEliminar').click(function (event) {
+
+                 event.preventDefault();
+                 $.ajax({
+                     url: '/dj-admin/eliminar_entradas/',
+                     type: "POST",
+                     data: {'id_usuario': id},
+                     success: function (response) {
+                         $('#myTable').DataTable().ajax.reload();
+                         $('#modalEliminar').modal('hide');
+                         $('#confirmarEliminar').unbind('click');
+                         recargarMensajes();
+                     }
+                 });
+             });
+             $('#modalEliminar').modal('show');
+         }
+
+    </script>
+
+{% endblock %}
+
+</html>
