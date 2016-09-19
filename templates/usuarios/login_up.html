@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load bootstrap3 %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block NavBar %}
+
+{% endblock %}
+{% block Centro %}
+    <h1>Agregar Usuarios </h1>
+<form method="post" action="{% url 'Index' %}">
+
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary {% block button_class %}{% endblock %}">
+            {% block button_text %} Login {% endblock %}
+        </button>
+    {% endbuttons %}
+
+
+</form>
+
+{% endblock %}
+{% block Footer %}
+
+{% endblock %}
+</body>
+</html>
