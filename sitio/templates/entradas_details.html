@@ -66,7 +66,7 @@
 
     {% csrf_token %}
     {% bootstrap_form forms %}
-    <input type="hidden" value="{{ ids }}" id="url" name="url">
+
     {% buttons %}
         <button type="submit" class="btn btn-primary">Comentar</button>
     {% endbuttons %}

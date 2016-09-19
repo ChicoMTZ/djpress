@@ -41,7 +41,7 @@
 
      {% for elemt in paginas %}
 
-         <p><a href="{% url 'Pagina_Details' elemt.pk %}">{{ elemt.Titulo }}</a></p>
+         <p><a href="{% url 'Pagina_Details' elemt.Fecha elemt.pk %}">{{ elemt.Titulo }}</a></p>
 
 
      {% endfor %}
@@ -60,7 +60,7 @@
             <small>RECENT POSTS</small>
         </h4>
         <hr>
-        <a href="{% url 'Entradas_Details' entrada.pk %}"><h2>{{ entrada.Titulo }}</h2></a>
+        <a href="{% url 'Entradas_Details' entrada.Fecha entrada.pk %}"><h2>{{ entrada.Titulo }}</h2></a>
 
         <p>{{ entrada.Texto|truncatewords_html:60|safe }}</p>
         <p class="text-right">{{ entrada.Fecha }}</p>

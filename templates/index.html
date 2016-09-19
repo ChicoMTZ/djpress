@@ -28,7 +28,7 @@
         <table class="table" id="myTable">
             <thead>
             <tr>
-                <th>#</th>
+
                 <th>Titulo</th>
                 <th>Autor</th>
                 <th>Comentarios</th>
@@ -54,12 +54,12 @@
                 "sAjaxSource": "/ajax/get_entradas/",
                              "fnRowCallback": function (nRow, aData, iDisplayIndex) {
 
-                                 $('td:eq(1)', nRow).html('<a href="/entradas_details/'+aData[0]+'" > '+aData[1]+'</a>');
+                                 $('td:eq(0)', nRow).html('<a href="/entradas_details/'+aData[0]+'/'+aData[4]+'" > '+aData[1]+'</a>');
 
-                                 $('td:eq(2)', nRow).html( '<a href="/dj-admin/perfiles/'+aData[5]+'">' +aData[2]+'</a>');
+                                 $('td:eq(1)', nRow).html( '<a href="/dj-admin/perfiles/'+aData[5]+'">' +aData[2]+'</a>');
 
-                                 $('td:eq(4)', nRow).html('<a href="/dj-admin/editar_entradas/'+aData[0]+'">Editar</a>' + ' ' +
-                                              '<a href="#" onclick="deleteUser('+aData[0]+')">Eliminar</a>');
+                                 $('td:eq(3)', nRow).html('<a href="/dj-admin/editar_entradas/'+aData[0]+'/'+aData[4]+'">Editar</a>' + ' ' +
+                                              '<a href="#" onclick="deleteUser('+aData[4]+')">Eliminar</a>');
 
                              }
                          });

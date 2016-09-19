@@ -29,7 +29,7 @@
         <table class="table" id="myTable">
             <thead>
             <tr>
-                <th>#</th>
+
                 <th>Titulo</th>
                 <th>Autor</th>
                 <th>Acciones</th>
@@ -55,11 +55,11 @@
                 "sAjaxSource": "/ajax/get_paginas/",
                              "fnRowCallback": function (nRow, aData, iDisplayIndex) {
 
-                                 $('td:eq(1)', nRow).html('<a href="/paginas_details/'+aData[0]+'" > '+aData[1]+'</a>');
+                                 $('td:eq(0)', nRow).html('<a href="/pagina_details/'+aData[4]+'/'+aData[0]+'" > '+aData[1]+'</a>');
 
-                                 $('td:eq(2)', nRow).html( '<a href="/dj-admin/perfiles/'+aData[5]+'">' +aData[2]+'</a>');
+                                 $('td:eq(1)', nRow).html( '<a href="/dj-admin/perfiles/'+aData[3]+'">' +aData[2]+'</a>');
 
-                                 $('td:eq(3)', nRow).html('<a href="/dj-admin/editar_paginas/'+aData[0]+'">Editar</a>' + ' ' +
+                                 $('td:eq(2)', nRow).html('<a href="/dj-admin/editar_paginas/'+aData[4]+'/'+aData[0]+'">Editar</a>' + ' ' +
                                               '<a href="#" onclick="deleteUser('+aData[0]+')">Eliminar</a>');
 
                              }

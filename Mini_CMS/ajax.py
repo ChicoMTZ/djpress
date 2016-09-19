@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from Mini_CMS.models import Entrada, Pagina
 from sitio.models import Comentario
 
+
 def get_entradas(request):
     elementos = []
     usuarios = Entrada.objects.all()

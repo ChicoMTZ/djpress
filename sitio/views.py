@@ -27,8 +27,7 @@ class Entradas_Details(DetailView):
         # Call the base implementation first to get a context
         context = super(Entradas_Details, self).get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['ids']=(self.kwargs['pk'])
-        yu = Entrada.objects.get(pk=self.kwargs['pk'])
+        yu = Entrada.objects.get(pk=self.object.pk)
         context['List_Coment'] = yu.comentario_set.all()
         context['forms'] = Comentarios_Form
 
