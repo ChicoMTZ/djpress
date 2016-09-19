@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 <!DOCTYPE html>
 <html>
+{% block NavBar %}
 
+{% endblock %}
 {% block Centro %}
 
     <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -24,7 +26,7 @@
 
     <h1>Panel de Administración</h1>
     <p>Modifique, Elimine y Actualice todas sus entradas</p>
-    {% if not filtrado %}
+
     <div class="table-responsive">
         <table class="table" id="myTable">
             <thead>
@@ -88,9 +90,7 @@
          }
 
     </script>
-        {% else %}
-        {% include 'tabla.html' %}
-{% endif %}
+       <h1>Se jodio to</h1>
 {% endblock %}
 
 </html>

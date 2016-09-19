@@ -13,7 +13,7 @@ class agregar_entradas(CreateView, SuccessMessageMixin):
     template_name = 'añadir_entradas.html'
     model = Entrada
     success_url = '/dj-admin/'
-    fields = ['Autor', 'Titulo', 'Texto', 'Descripcion', 'Fecha']
+    fields = ['Autor', 'Category', 'Titulo', 'Texto', 'Descripcion', 'Fecha']
 
 
 @method_decorator(login_required, name='dispatch')

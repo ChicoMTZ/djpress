@@ -36,8 +36,6 @@ def change_password(request):
     return template_response
 
 
-
-
 @method_decorator(login_required, name='dispatch')
 class Usuarios(ListView):
     model = User

@@ -1,6 +1,8 @@
 from django.http import JsonResponse
 from Mini_CMS.models import Entrada, Pagina
 from sitio.models import Comentario
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 
 
 def get_entradas(request):
@@ -28,3 +30,8 @@ def get_comentarios(request):
         elementos.append(usuario.json())
     response = {'aaData': elementos}
     return JsonResponse(response)
+
+
+def filtrado_categorias(request, pk):
+    filtrado = 'Hola'
+    return render(request, 'index.html', {'filtrado':filtrado})

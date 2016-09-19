@@ -45,6 +45,7 @@ urlpatterns = extra_patterns + [
     url(r'^ajax/get_entradas/$', get_entradas, name='get_entradas'),
     url(r'^ajax/get_paginas/$', get_paginas, name='get_paginas'),
     url(r'^ajax/get_comentarios/$', get_comentarios, name='get_comentarios'),
+    url(r'^ajax/filtrado_categorias/(?P<pk>[\w-]+)/$', filtrado_categorias, name='filtrado_categorias'),
 
 
     url(r'^dj-admin/comentarios/$', comentarios.as_view(), name='Comentarios'),

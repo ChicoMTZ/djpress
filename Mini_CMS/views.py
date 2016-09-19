@@ -6,4 +6,3 @@ from django.shortcuts import render
 @login_required()
 def notificaciones(request):
     return render(request, 'notificaciones.html')
-
