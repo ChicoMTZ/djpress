@@ -1,0 +1,5 @@
+Django=1.10
+django_ajax
+ckeditor
+bootstrap3
+simple_email_confirmation
